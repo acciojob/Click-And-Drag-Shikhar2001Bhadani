@@ -1,4 +1,3 @@
-// Your code here.
 document.addEventListener("DOMContentLoaded", () => {
     const itemsContainer = document.querySelector(".items");
     const items = document.querySelectorAll(".item");
@@ -14,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             offsetY = event.clientY - rect.top;
             selectedItem.style.position = "absolute";
             selectedItem.style.zIndex = "1000";
+            document.body.style.cursor = "grabbing";
         });
     });
     
@@ -39,6 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (selectedItem) {
             selectedItem.style.zIndex = "1";
             selectedItem = null;
+            document.body.style.cursor = "default";
         }
+    });
+    
+    itemsContainer.addEventListener("mousedown", (event) => {
+        event.preventDefault();
     });
 });
